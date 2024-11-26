@@ -9,9 +9,6 @@ function App() {
     { name: "sahil", phone: "8834547785" },
     { name: "sudhanshu", phone: "7508393535" },
     { name: "om", phone: "982544445" },
-    { name: "abhinav", phone: "8834547789" },
-    { name: "supriya", phone: "8834456787" },
-    { name: "Alexia", phone: "8834456787" },
   ]);
   const [newName, setNewName] = useState("");
   const [newPhone, setNewPhone] = useState("");
@@ -36,12 +33,22 @@ function App() {
     }
   }
 
+  //delete karo
+  function deletekaro(index) {
+    console.log(index);
+    const updatedContacts = contact.filter((_, i) => {
+      return i !== index;
+    });
+
+    setContact(updatedContacts);
+  }
+
   const filteredContacts = contact.filter((contact) => {
     return contact.name.includes(search);
   });
   return (
     <div className="conntainer">
-      <form method="POST">
+      <form>
         <h1>Contact list</h1>
 
         <div className="search">
@@ -58,6 +65,7 @@ function App() {
         {filteredContacts.map((c, index) => (
           <li key={index}>
             {c.name} -- {c.phone}
+            <button onClick={() => deletekaro(index)}>Delete</button>
           </li>
         ))}
         <div>
