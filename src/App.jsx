@@ -25,7 +25,7 @@ function App() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(contact),
+          body: JSON.stringify(updatedContact),
         }
       );
     } else {
