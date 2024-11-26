@@ -16,7 +16,7 @@ function App() {
   async function addkaro(e) {
     e.preventDefault();
 
-    if (newName || newPhone) {
+    if (newName && newPhone) {
       setContact([...contact, { name: newName, phone: newPhone }]);
       let response = await fetch(
         "https://contact-new-85f22-default-rtdb.firebaseio.com/contactreact.json",
@@ -62,12 +62,14 @@ function App() {
           />
         </div>
         <h2 className="result-list"></h2>
-        {filteredContacts.map((c, index) => (
-          <li key={index}>
-            {c.name} -- {c.phone}
-            <button onClick={() => deletekaro(index)}>Delete</button>
-          </li>
-        ))}
+        <ul>
+          {filteredContacts.map((c, index) => (
+            <li key={index}>
+              {c.name} -- {c.phone}
+              <button onClick={() => deletekaro(index)}>Delete</button>
+            </li>
+          ))}
+        </ul>
         <div>
           <div>
             <input
